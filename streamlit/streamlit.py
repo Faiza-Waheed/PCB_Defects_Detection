@@ -38,14 +38,9 @@ def remove_uploaded_image(image_path):
 
 st.sidebar.title("Table of contents")
 pages = ["Project Introduction", "Data Exploration", "Feature Engineering", "Model Training", 
-         "Model Optimization and Evaluation", "Model Inference" #, "Authors"
+         "Model Optimization and Evaluation", "Model Inference" 
          ]
 page = st.sidebar.radio("Go to", pages)
-
-st.sidebar.header("Authors")
-st.sidebar.markdown("*Faiza Waheed*")
-st.sidebar.markdown("*Niels Hartanto*")
-st.sidebar.markdown("*Gernot Gellwitz*")
 
 @st.cache_data
 def local_css(file_name):
@@ -97,14 +92,14 @@ and classify PCB defects.""")
     
 elif page == pages[1]:
     st.write("# Data Exploration")
-    st.write("- The image dataset we used has over 10,000 synthetically generated images.")
+    st.write("- The image dataset used has over 10,000 synthetically generated images.")
     st.write("- The dataset is publicly available at: https://www.kaggle.com/datasets/akhatova/pcb-defects)")
     
     st.write("#### Sample image for a defective PCB:")
     image_2 = load_image('sample_pcb_open_circuit.jpg')
     st.image(image_2, caption="Sample of a defected PCB", width=500)
 
-    with st.expander("The types of defects we will detect in this project:", expanded=False):
+    with st.expander("The types of defects detected in this project:", expanded=False):
         image_3 = load_image('Defect_types.png')
         st.image(image_3, caption="Sample defects explored in this project", use_column_width='auto')
 
@@ -123,7 +118,7 @@ elif page == pages[1]:
             plt.title(f"{choice} {i + 1}", fontsize=20)
             plt.imshow(img)
         st.pyplot(fig)
-    st.write("We see that each image can have more than one defect, although in each image we only have one type of defect.")
+    st.write("It can be seen that each image can have more than one defect, although in each image there is only have one type of defect.")
     local_css('expander_regular.css')
     with st.expander(f"Dimensions of dataset images: {image_2.size}"):
         st.write("⭢ Those images are too large to handle without any pre-processing.")
@@ -146,7 +141,7 @@ elif page == pages[2]:
         st.write(" **Observations**")  
         st.write("- The dataset is relatively balanced overall")
         st.write("- Still, this is the visualization **before** doing feature engineering to ensure model robustness")
-        st.write("- For model training we randomly generate a balanced dataset after performing the next preprocessing steps")
+        st.write("- For model training, a randomly generated balanced dataset is used after performing the next preprocessing steps")
 
     st.write("### 2. Data Preprocessing")
     st.write("- Data preprocessing plays a crucial role in constructing effective Machine Learning models") 
@@ -177,15 +172,15 @@ elif page == pages[2]:
         st.write("- The second label will be the defect type")
 
     with st.expander("Augmentation"):
-        st.write("- We considered some ready-to-use image augmentation solutions like Image-Data-Generator or Albumentations")
+        st.write("- It was considered to utilize some ready-to-use image augmentation solutions like Image-Data-Generator or Albumentations")
         st.write("- For several reasons those have not been adequate for our dataset and our goal")
-        st.write("- Hence we had to implement manual augmentations:")
+        st.write("- Hence manual augmentations were implemented:")
 
         image_9 = load_image('manual augmentation.png')
         st.image(image_9, caption="Manually implemented augmentations", use_column_width='auto')
 
     with st.expander("Separation of Multiple Defects"):
-        st.write("- For model training we separated multiple defects in one cropped image by image duplication")
+        st.write("- For model training, multiple defects in one cropped image were separated by image duplication")
         new_width = 400
         image_10 = load_image('separated_img1.png')
         image_10 = image_10.resize((new_width, int((new_width / image_10.width) * image_10.height)))
@@ -197,7 +192,7 @@ elif page == pages[2]:
 elif page == pages[3]:
     local_css('expander_medium.css')
     st.write("# Model Training")
-    st.write("For the development and implementation of our machine learning model, we went through many design iterations to finally decide on the RES-UNET model scheme.")
+    st.write("For the development and implementation of the machine learning model, it went through many design iterations to finally decide on the RES-UNET model scheme.")
     with st.expander("1 - RES-UNET"):
         #image_13 = pdf2image.convert_from_bytes("pcb-resunet-model.pdf")
         pdf_path = os.path.join(current_script_directory , 'figures', 'pcb-resunet-model.pdf')
@@ -214,10 +209,10 @@ elif page == pages[3]:
         st.write(" **Observations**:")
         st.write("- The resizing of images for VGG16 to 244,244 RGB dimensions causes alot of the features of the defects to be distorted")
         st.write("- Unfortunately this model was unable to present reasonably good output results for our segmentation task")
-        st.write("- Hence we dropped any further training on this pre-trained model")
+        st.write("- Hence it was decided to drop any further training on this pre-trained model")
 
     with st.expander("3 - YOLOv5"):
-        st.write("In addition to designing and developing our RES_UNET model for training, we also successfully implemented the YOLOv5 object detection model developed by Ultralytics on the PCB datase")
+        st.write("In addition to designing and developing our RES_UNET model for training, the YOLOv5 object detection model developed by Ultralytics was also successfully implementedon the PCB datase.")
         st.write("This pre-trained model can be utilized for both segmentation and classification, providing us with the opportunity to compare the results of our model with this pretrained and well-established design.")
         st.write("For more details on model architecture please go to:")
         st.write("(https://docs.ultralytics.com/yolov5/tutorials/architecture_description/)")
@@ -246,7 +241,7 @@ elif page == pages[4]:
     st.image(image_16, caption="Validation Results", 
              use_column_width='auto')
 
-    st.write("""Finally we look at the prediction results along side the original images to demonstrate a high 
+    st.write("""Finally a look at the prediction results along side the original images to demonstrate a high 
              degree of accuracy and precision, highlighting the effectiveness and potential of this machine 
              learning model.""")  
     image_17 = load_image('results1_resunet.png')
@@ -261,8 +256,8 @@ elif page == pages[4]:
 #model inference
 elif page == pages[5]:
     st.write("# Model Inference")
-    st.write("""Now that we have found our efficient model, let's determine if we can predict the defects 
-             accurately. The model inference can be run on pre-loaded test images or we can upload our own 
+    st.write("""Now that the efficient model is trained and validated, let's determine if it can predict the defects 
+             accurately. The model inference can be run on pre-loaded test images or the user can upload thier own 
 	     images for testing.""")
 	#i am working on uploading various images for testing
     
