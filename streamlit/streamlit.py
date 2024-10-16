@@ -221,8 +221,21 @@ elif page == pages[3]:
 '''
 
 if page == pages[0]:
-    st.write("# Model Optimization and Evaluation")
-    st.write("""The performance of the models was evaluated using accuracy, MeanIoU, precision, recall, 
+    st.write('# Detection and Classification of Defects on Printed Circuit Boards (PCBs)')
+    st.write("## Model Optimization and Evaluation")
+
+    #model block diagram
+    with st.expander("Model - RES-UNET"):
+        #image_13 = pdf2image.convert_from_bytes("pcb-resunet-model.pdf")
+        pdf_path = os.path.join(current_script_directory , 'figures', 'pcb-resunet-model.pdf')
+        pdf_bytes = open(pdf_path, "rb").read()
+        images = convert_from_bytes(pdf_bytes)
+        image_13 = images[0]
+        #image_13 = image_zoom(image_13, size=700, zoom_factor=2.5)
+        #image_13 = load_image('RESUNET_architecture.png')
+        st.image(image_13, caption="RES-UNET model with Segmentation and Classification outputs", use_column_width='auto')
+	    
+    st.write("""The performance of the model was evaluated using accuracy, MeanIoU, precision, recall, 
              and F1-score metrics, ultimately achieving a classification accuracy of 95%""")
     st.write("""The classification report and the confusion matrix on the validation set show that precision 
              and recall for each defect class vary but they are generally stable.""")
