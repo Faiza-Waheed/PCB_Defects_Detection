@@ -218,7 +218,9 @@ elif page == pages[3]:
         st.write("For more details on model architecture please go to:")
         st.write("(https://docs.ultralytics.com/yolov5/tutorials/architecture_description/)")
 
-elif page == pages[0]:
+'''
+
+if page == pages[0]:
     st.write("# Model Optimization and Evaluation")
     st.write("""The performance of the models was evaluated using accuracy, MeanIoU, precision, recall, 
              and F1-score metrics, ultimately achieving a classification accuracy of 95%""")
@@ -251,8 +253,7 @@ elif page == pages[0]:
     st.image(image_18, use_column_width='auto')
     image_19 = load_image('results3_resunet.png')
     st.image(image_19, caption="Final prediction Results for RES-UNET model", 
-             use_column_width='auto')
-'''        
+             use_column_width='auto')        
 
 #model inference
 elif page == pages[1]:
