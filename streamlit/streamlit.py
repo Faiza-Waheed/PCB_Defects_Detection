@@ -345,7 +345,7 @@ elif page == pages[1]:
         st.write("Classifying and drawing bounding boxes around defects on the original image.")
         if (test_selection is not None):
             disp_test_selection = load_image(test_selection)
-            st.image(disp_test_selection, caption="Selected Test Image", width=700)
+            st.image(disp_test_selection, caption="Selected Test Image") #, width=700)
             # predicttion on_click of button
             if st.button('Show defects', key='show_defects_model'):
                 with st.spinner('Wait for a few seconds...'):
