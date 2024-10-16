@@ -49,6 +49,7 @@ def local_css(file_name):
     with open(file_path) as f:
         st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
+'''
 if page == pages[5]:
     #st.write('# Detection and Classification of Defects on Printed Circuit Boards (PCBs)')
     st.html("<h1 style='text-align: center'>Detection and Classification of Defects on Printed Circuit Boards (PCBs) </hr> with Machine Learning</h1>")
@@ -251,7 +252,7 @@ elif page == pages[0]:
     image_19 = load_image('results3_resunet.png')
     st.image(image_19, caption="Final prediction Results for RES-UNET model", 
              use_column_width='auto')
-         
+'''        
 
 #model inference
 elif page == pages[1]:
