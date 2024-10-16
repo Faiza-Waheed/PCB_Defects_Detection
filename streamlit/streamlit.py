@@ -298,7 +298,7 @@ elif page == pages[1]:
             )
             test_selection = os.path.join('test_images', test_options[test_option-1])
             disp_test_selection = load_image(test_selection)
-            st.image(disp_test_selection, caption="Selected Test Image", width=700)
+            st.image(disp_test_selection, caption="Selected Test Image") #, width=700)
         
         else:
             uploaded_selection = st.file_uploader("Upload a PCB image",
@@ -327,7 +327,7 @@ elif page == pages[1]:
                 test_options = [unique_filename]
                 test_selection = test_options[0]
                 disp_test_selection = load_image(test_selection)
-                st.image(disp_test_selection, caption="Selected Test Image", width=700)
+                st.image(disp_test_selection, caption="Selected Test Image")#, width=700)
 
         # on_click of predict button
         if st.button('View mask prediction', key='show_mask'):
@@ -336,7 +336,7 @@ elif page == pages[1]:
             # run image processing pipeline
             image, num_defects = process_image(1, test_img=('./figures/'+test_selection))
             st.image(image,
-                    caption=None, width=700
+                    caption=None #, width=700
             )
             st.write("Number of masks detected: ", num_defects)
             st.success('Finished mask prediction.')
@@ -353,7 +353,7 @@ elif page == pages[1]:
                 # run image processing pipeline
                 image, num_defects = process_image(2, test_img=('./figures/'+test_selection))
                 st.image(image,
-                        caption=None, width=700
+                        caption=None #, width=700
                 )
                 st.write("Number of defects detected: ", num_defects)
                 st.success('Finished defects localisation and classification.')
