@@ -37,7 +37,7 @@ def remove_uploaded_image(image_path):
         os.remove(image_path)
 
 st.sidebar.title("Table of contents")
-pages = ["Project Introduction", "Data Exploration", "Feature Engineering", "Model Training", 
+pages = [#"Project Introduction", "Data Exploration", "Feature Engineering", "Model Training", 
          "Model Optimization and Evaluation", "Model Inference" 
          ]
 page = st.sidebar.radio("Go to", pages)
@@ -49,7 +49,7 @@ def local_css(file_name):
     with open(file_path) as f:
         st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
-if page == pages[0]:
+if page == pages[4]:
     #st.write('# Detection and Classification of Defects on Printed Circuit Boards (PCBs)')
     st.html("<h1 style='text-align: center'>Detection and Classification of Defects on Printed Circuit Boards (PCBs) </hr> with Machine Learning</h1>")
     local_css("expander_bold.css")
@@ -90,7 +90,7 @@ analysis and advanced feature engineering with the practical application of mach
 and classify PCB defects.""")
 
     
-elif page == pages[1]:
+elif page == pages[3]:
     st.write("# Data Exploration")
     st.write("- The image dataset used has over 10,000 synthetically generated images.")
     st.write("- The dataset is publicly available at: https://www.kaggle.com/datasets/akhatova/pcb-defects)")
@@ -189,7 +189,7 @@ elif page == pages[2]:
         image_12 = image_12.resize((new_width, int((new_width / image_12.width) * image_12.height)))
         st.image(image_12, caption="Manually implemented defect separation", use_column_width='auto')
     
-elif page == pages[3]:
+elif page == pages[5]:
     local_css('expander_medium.css')
     st.write("# Model Training")
     st.write("For the development and implementation of the machine learning model, it went through many design iterations to finally decide on the RES-UNET model scheme.")
@@ -217,7 +217,7 @@ elif page == pages[3]:
         st.write("For more details on model architecture please go to:")
         st.write("(https://docs.ultralytics.com/yolov5/tutorials/architecture_description/)")
 
-elif page == pages[4]:
+elif page == pages[0]:
     st.write("# Model Optimization and Evaluation")
     st.write("""The performance of the models was evaluated using accuracy, MeanIoU, precision, recall, 
              and F1-score metrics, ultimately achieving a classification accuracy of 95%""")
@@ -254,7 +254,7 @@ elif page == pages[4]:
          
 
 #model inference
-elif page == pages[5]:
+elif page == pages[1]:
     st.write("# Model Inference")
     st.write("""Now that the efficient model is trained and validated, let's determine if it can predict the defects 
              accurately. The model inference can be run on pre-loaded test images or the user can upload thier own 
